@@ -10,8 +10,6 @@ This repository contains a Selenium pytest test suite for automated testing of t
 - [Running Tests](#running-tests)
 - [Test Suite Details](#test-suite-details)
 - [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [Contact](#contact)
 
 ## Overview
 The Fract Test Suite automates end-to-end testing of the Fract application using Selenium WebDriver and pytest. It covers key functionalities such as:
@@ -30,7 +28,7 @@ Tests generate HTML reports (`report.html`) for easy result analysis, use `webdr
 - **Git**: For cloning the repository (`git --version`).
 - **Google Chrome**: Latest version (`chrome://settings/help`).
 - **ChromeDriver**: Auto-managed via `webdriver-manager`.
-- **Operating System**: Windows, macOS, or Linux.
+- **Operating System**: Windows
 - **Text Editor**: Optional (e.g., VS Code) for viewing/editing tests.
 
 ## Project Structure
@@ -64,12 +62,11 @@ fract-test-suite/
 └── README.md                            # This documentation
 ```
 
-**Note**: Do not commit `.env` files containing credentials.
 
 ## Setup Instructions
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/fract-test-suite.git
+   git clone https://github.com/specialtechie/fract-test-suite.git
    cd fract-test-suite
    ```
 
@@ -78,10 +75,6 @@ fract-test-suite/
    python -m venv venv
    ```
    Activate:
-   - Linux/macOS:
-     ```bash
-     source venv/bin/activate
-     ```
    - Windows:
      ```bash
      venv\Scripts\activate
@@ -98,16 +91,7 @@ fract-test-suite/
    - `webdriver-manager`: ChromeDriver management.
    - `python-dotenv`: Environment variables.
 
-4. **Configure Credentials**:
-   - Create `.env` in the project root:
-     ```plaintext
-     FRACT_USERNAME=your-username
-     FRACT_PASSWORD=your-password
-     ```
-   - Contact [your-email@example.com] for credentials.
-   - **Security**: Do not share `.env` publicly or commit to Git.
-
-5. **Verify Setup**:
+4. **Verify Setup**:
    - Confirm Chrome version: `chrome://settings/help`.
    - Check Python: `python --version`.
    - List dependencies: `pip list`.
@@ -124,7 +108,7 @@ Tests run in headless mode and generate an HTML report.
 2. **Run Specific Test**:
    Example:
    ```bash
-   pytest tests/test_error_message_validation.py --html=report.html
+   pytest tests/test_address_search.py --html=report.html
    ```
 
 3. **View Results**:
@@ -139,7 +123,7 @@ Tests run in headless mode and generate an HTML report.
      ```
 
 ## Test Suite Details
-The suite includes over 80 test cases, covering the following Fract application functionalities:
+The suite includes over 100 test cases, covering the following Fract application functionalities:
 
 - **Login** (`test_login.py`):
   - Verifies successful login with valid credentials.
@@ -264,20 +248,11 @@ The suite includes over 80 test cases, covering the following Fract application 
 **Notes**:
 - Durations are estimated from prior runs (see test results table).
 - Some functionalities (e.g., Territories Report, Pivot Table) are assumed covered by related tests; confirm specific test files if needed.
-- Tests use `https://app.fract.com`. Update URLs in `setup_method` if different (e.g., `/dashboard`, `/contact`).
+- Tests use `https://app.fract.com`.
 
 ## Troubleshooting
 - **ChromeDriver Issues**:
-  - `webdriver-manager` auto-installs ChromeDriver. If errors occur:
-    ```bash
-    pip install --upgrade webdriver-manager
-    ```
-    Or manually download from [chromedriver.chromium.org](https://chromedriver.chromium.org/downloads) and place in PATH.
-
-- **Login Failures**:
-  - Verify `.env` credentials (`FRACT_USERNAME`, `FRACT_PASSWORD`).
-  - Update login selectors if UI changes (e.g., `input[name='username']`).
-  - Contact [your-email@example.com] for credentials.
+  - manually download from [chromedriver.chromium.org](https://chromedriver.chromium.org/downloads) and place in PATH.
 
 - **Element Not Found**:
   - UI changes may break selectors. Update tests (e.g., `span.error` to `span.error-message`).
@@ -294,49 +269,15 @@ The suite includes over 80 test cases, covering the following Fract application 
   - Check `report.html` for details.
   - Run tests individually:
     ```bash
-    pytest tests/test_error_message_validation.py -v
+    pytest tests/test_dashboard.py
     ```
   - Ensure stable internet.
-
-- **Permission Errors**:
-  - Use `sudo` (Linux/macOS) or Administrator mode (Windows) if needed.
-  - Check directory write access.
+  - Some test might or will fail such as change profile password test_profile_settings.py. 
+  - Update login details to current to test (`FRACT_USERNAME`, `FRACT_PASSWORD`).
+  - Also change active project for some test cases. 
 
 - **Report Issues**:
   - Verify `pytest-html` (`pip show pytest-html`).
   - Ensure `--html=report.html` in command.
-
-## Contributing
-1. Fork the repository.
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature/new-test
-   ```
-3. Add tests in `tests/`, matching existing structure.
-4. Update `requirements.txt` if needed:
-   ```bash
-   pip freeze > requirements.txt
-   ```
-5. Commit and push:
-   ```bash
-   git add .
-   git commit -m "Add test for new functionality"
-   git push origin feature/new-test
-   ```
-6. Open a pull request.
-
-**Guidelines**:
-- Use descriptive test names (e.g., `test_validate_error_message`).
-- Include `WebDriverWait` for dynamic elements.
-- Use `.env` for credentials.
-- Test locally:
-  ```bash
-  pytest tests/
-  ```
-
-## Contact
-- **Email**: [your-email@example.com]
-- **GitHub Issues**: [https://github.com/your-username/fract-test-suite/issues](https://github.com/your-username/fract-test-suite/issues)
-- **Credentials**: Request `FRACT_USERNAME` and `FRACT_PASSWORD` securely.
 
 Provide `report.html` or error logs for support.
