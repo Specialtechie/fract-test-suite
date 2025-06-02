@@ -87,9 +87,11 @@ fract-test-suite/
    Installs:
    - `pytest`: Test framework.
    - `selenium`: Web automation.
-   - `pytest-html`: HTML reports.
-   - `webdriver-manager`: ChromeDriver management.
-   - `python-dotenv`: Environment variables.
+   - `pytest-html`: HTML reports and others.
+
+   **ChromeDriver:**
+   - Manually download from chromedriver.chromium.org and place in PATH fract-test-suite.
+
 
 4. **Verify Setup**:
    - Confirm Chrome version: `chrome://settings/help`.
