@@ -35,15 +35,15 @@ Tests generate HTML reports (`report.html`) for easy result analysis, use `webdr
 ```plaintext
 fract-test-suite/
 ├── tests/
-│   ├── test_error_message_validation.py  # Validates form errors (e.g., "Name is required")
-│   ├── test_send_message_div.py          # Tests in-app chat initiation
-│   ├── test_team_list_add.py             # Tests adding team lists (e.g., "Campground List")
 │   ├── test_login.py                     # Tests login functionality
 │   ├── test_map_toolsp.py                # Tests map tools
 │   ├── test_map_lists.py                 # Tests map list interactions
 │   ├── test_findme.py                    # Tests "Find Me" feature
 │   ├── test_user_profile.py              # Tests user profile settings
 │   ├── test_project_settings.py          # Tests project settings
+│   ├── test_error_message_validation.py  # Validates form errors (e.g., "Name is required")
+│   ├── test_send_message_div.py          # Tests in-app chat initiation
+│   ├── test_team_list_add.py             # Tests adding team lists (e.g., "Campground List")
 │   ├── test_notification.py              # Tests notification settings
 │   ├── test_tutorials.py                 # Tests tutorial access
 │   ├── test_new_territory.py             # Tests territory creation
