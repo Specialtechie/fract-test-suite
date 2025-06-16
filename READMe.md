@@ -276,15 +276,9 @@ The suite includes over 80 test cases, covering the following Fract application 
     ```
   - Ensure stable internet.
 
-- **Permission Errors**:
-  - Use `sudo` (Linux/macOS) or Administrator mode (Windows) if needed.
-  - Check directory write access.
-
 - **Report Issues**:
   - Verify `pytest-html` (`pip show pytest-html`).
   - Ensure `--html=report.html` in command.
 
 ## Contact
-- **GitHub Issues**: [https://github.com/your-username/fract-test-suite/issues](https://github.com/your-username/fract-test-suite/issues)
-
 Provide `report.html` or error logs for support.
