@@ -65,7 +65,7 @@ fract-test-suite/
 ## Setup Instructions
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/fract-test-suite.git
+   git clone https://github.com/Specialtechie/fract-test-suite.git
    cd fract-test-suite
    ```
 
