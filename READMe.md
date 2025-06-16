@@ -29,7 +29,7 @@ Tests generate HTML reports (`report.html`) for easy result analysis, use `webdr
 - **Git**: For cloning the repository (`git --version`).
 - **Google Chrome**: Latest version (`chrome://settings/help`).
 - **ChromeDriver**: Auto-managed via `webdriver-manager`.
-- **Operating System**: Windows, macOS, or Linux.
+- **Operating System**: Windows.
 - **Text Editor**: Optional (e.g., VS Code) for viewing/editing tests.
 
 ## Project Structure
