@@ -1,261 +1,342 @@
-Fract Test Suite
-This repository contains a Selenium pytest test suite for automated testing of the Fract web application (https://app.fract.com). The suite validates critical UI interactions, form submissions, error messages, and navigation flows, ensuring the application's functionality for features like messaging, team list management, and form validation.
-Table of Contents
+# Fract Test Suite
 
-Overview
-Prerequisites
-Project Structure
-Setup Instructions
-Running Tests
-Test Suite Details
-Troubleshooting
-Contributing
-Contact
+This repository contains a Selenium pytest test suite for automated testing of the Fract web application (`https://app.fract.com`). The suite validates critical functionalities, including login, UI interactions, map tools, list management, territory creation, and administrative features, ensuring robust performance across the application’s core components.
 
-Overview
-The Fract Test Suite automates end-to-end testing of the Fract application using Selenium WebDriver and pytest. Tests cover:
+## Table of Contents
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [Project Structure](#project-structure)
+- [Setup Instructions](#setup-instructions)
+- [Running Tests](#running-tests)
+- [Test Suite Details](#test-suite-details)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [Contact](#contact)
 
-UI Interactions: Clicking buttons (e.g., "Messages", "Send us a message") and verifying panel visibility.
-Form Validation: Checking error messages (e.g., "Name is required") on form submissions.
-Navigation: Accessing dashboards, team lists, and contact forms.
-Error Handling: Ensuring no unexpected errors appear during interactions.
+## Overview
+The Fract Test Suite automates end-to-end testing of the Fract application using Selenium WebDriver and pytest. It covers key functionalities such as:
+- **Authentication**: Login and sign-out processes.
+- **User Interface**: Navigation, panel expansion, and UI element interactions.
+- **Map Features**: Map tools, list management, and location-based actions (e.g., Find Me).
+- **Territory Management**: Creating, customizing, and reporting on territories and team lists.
+- **Settings**: User profile, account, project, and notification configurations.
+- **Communication**: In-app chat functionality.
+- **Administration**: Admin dashboard and project management.
 
-The suite is designed for reliability, using webdriver-manager to handle browser drivers and python-dotenv for secure credential management. Tests generate HTML reports for easy result analysis.
-Prerequisites
-Before running the tests, ensure the following are installed:
+Tests generate HTML reports (`report.html`) for easy result analysis, use `webdriver-manager` for browser driver management, and secure credentials via `python-dotenv`.
 
-Python: Version 3.8 or higher (python --version).
-Git: For cloning the repository (git --version).
-Google Chrome: Latest version (chrome://settings/help to check).
-ChromeDriver: Automatically managed via webdriver-manager (included in dependencies).
-Operating System: Windows, macOS, or Linux.
-Text Editor: Optional, for viewing or editing tests (e.g., VS Code).
+## Prerequisites
+- **Python**: 3.8 or higher (`python --version`).
+- **Git**: For cloning the repository (`git --version`).
+- **Google Chrome**: Latest version (`chrome://settings/help`).
+- **ChromeDriver**: Auto-managed via `webdriver-manager`.
+- **Operating System**: Windows, macOS, or Linux.
+- **Text Editor**: Optional (e.g., VS Code) for viewing/editing tests.
 
-Project Structure
+## Project Structure
+```plaintext
 fract-test-suite/
 ├── tests/
-│   ├── test_error_message_validation.py  # Validates "Name is required" error
-│   ├── test_send_message_div.py          # Tests "Send us a message" div
-│   ├── test_team_list_add.py             # Tests adding "Campground List"
+│   ├── test_error_message_validation.py  # Validates form errors (e.g., "Name is required")
+│   ├── test_send_message_div.py          # Tests in-app chat initiation
+│   ├── test_team_list_add.py             # Tests adding team lists (e.g., "Campground List")
+│   ├── test_login.py                     # Tests login functionality
+│   ├── test_map_toolsp.py                # Tests map tools
+│   ├── test_map_lists.py                 # Tests map list interactions
+│   ├── test_findme.py                    # Tests "Find Me" feature
+│   ├── test_user_profile.py              # Tests user profile settings
+│   ├── test_project_settings.py          # Tests project settings
+│   ├── test_notification.py              # Tests notification settings
+│   ├── test_tutorials.py                 # Tests tutorial access
+│   ├── test_new_territory.py             # Tests territory creation
+│   ├── test_team_territory.py            # Tests team territory management
+│   ├── test_new_list_creation.py         # Tests list creation and data upload
+│   ├── test_team_list_mgt.py             # Tests team list management
+│   ├── test_business_list.py             # Tests business list management
+│   ├── test_business_Arts_Ents.py        # Tests arts & entertainment lists
+│   ├── test_territory_color.py           # Tests map area customization
+│   ├── test_signout.py                   # Tests sign-out
+│   ├── test_expand.py                    # Tests panel expand/collapse
 │   └── ...                              # Other tests (e.g., test_contact_us_form.py)
-├── .gitignore                           # Ignores virtual env, reports, etc.
+├── .gitignore                           # Ignores virtual env, reports, .env
 ├── requirements.txt                     # Python dependencies
 ├── pytest.ini                           # Pytest configuration
 └── README.md                            # This documentation
-
-Note: Do not commit .env files containing credentials.
-Setup Instructions
-Follow these steps to set up the test suite on your machine.
-
-Clone the Repository:
-git clone https://github.com/your-username/fract-test-suite.git
-cd fract-test-suite
-
-
-Create a Virtual Environment (recommended):
-python -m venv venv
-
-Activate the virtual environment:
-
-Linux/macOS:source venv/bin/activate
-
-
-Windows:venv\Scripts\activate
-
-
-
-
-Install Dependencies:
-pip install -r requirements.txt
-
-This installs:
-
-pytest: Test framework.
-selenium: Web automation.
-pytest-html: HTML report generation.
-webdriver-manager: Auto-manages ChromeDriver.
-python-dotenv: Handles environment variables.
-
-
-Configure Login Credentials:
-
-Create a .env file in the project root:FRACT_USERNAME=your-username
-FRACT_PASSWORD=your-password
-
-
-Contact [your-email@example.com] for valid credentials.
-Security Note: Do not share .env publicly or commit it to Git.
-
-
-Verify Setup:
-
-Ensure Chrome is installed.
-Check Python version:python --version
-
-
-Confirm dependencies:pip list
-
-
-
-
-
-Running Tests
-Tests are executed using pytest, with results saved as an HTML report.
-
-Run All Tests:
-pytest tests/ --html=report.html --self-contained-html
-
-
-Generates report.html with test results.
-Tests run in headless mode (no browser UI visible).
-
-
-Run a Specific Test:Example:
-pytest tests/test_error_message_validation.py --html=report.html
-
-
-View Results:
-
-Open report.html in a web browser to review pass/fail status, durations, and errors.
-Example output: "PASSED tests/test_error_message_validation.py::TestErrorMessageValidation::test_validate_error_message [20.000s]".
-
-
-Clean Up:
-
-Delete report.html if no longer needed.
-Deactivate virtual environment:deactivate
-
-
-
-
-
-Test Suite Details
-The test suite includes over 80 test cases, covering various Fract application features. Key tests include:
-
-test_error_message_validation.py:
-
-Validates the "Name is required" error on a contact form when submitted without a name.
-Verifies error visibility and style.
-Duration: ~20 seconds.
-
-
-test_send_message_div.py:
-
-Clicks the "Send us a message" div (Intercom widget).
-Verifies chat panel visibility.
-Duration: ~20 seconds.
-
-
-test_team_list_add.py:
-
-Clicks the "Add" button to include "Campground List" in Team Lists.
-Verifies list addition.
-Duration: ~20 seconds.
-
-
-Other Tests:
-
-test_contact_us_form.py: Tests form submission and redirects (~24 seconds).
-test_map_toolsp.py: Validates map tools UI (~63 seconds, longest test).
-test_login.py: Verifies login functionality (~6 seconds).
-See tests/ for full list, covering UI, forms, navigation, and map features.
-
-
-
-Notes:
-
-Tests assume access to https://app.fract.com. Update URLs in test files if the application changes.
-Some tests require navigation (e.g., to /contact or /dashboard). Ensure correct URLs in setup_method.
-Tests use WebDriverWait for robustness, with 10-15 second timeouts.
-
-Troubleshooting
-Common issues and solutions:
-
-ChromeDriver Version Mismatch:
-
-webdriver-manager should auto-install the correct ChromeDriver.
-If errors occur, verify Chrome version (chrome://settings/help) and update:pip install --upgrade webdriver-manager
-
-
-Manual install (if needed):
-Download from chromedriver.chromium.org.
-Place in PATH (e.g., /usr/local/bin or C:\bin).
-
-
-
-
-Login Failures:
-
-Verify .env contains correct FRACT_USERNAME and FRACT_PASSWORD.
-Check login selectors in tests (e.g., input[name='username']).
-Contact [your-email@example.com] for updated credentials.
-
-
-Element Not Found Errors:
-
-Application UI may have changed. Update selectors in test files (e.g., span.error to span.error-message).
-Increase timeout:WebDriverWait(self.driver, 15).until(...)
-
-
-Debug:print(self.driver.find_elements(By.CSS_SELECTOR, "span.error"))
-
-
-
-
-Tests Timeout or Fail:
-
-Ensure stable internet connection.
-Check report.html for failure details.
-Run tests individually to isolate issues:pytest tests/test_error_message_validation.py -v
-
-
-
-
-Permission Issues:
-
-Ensure you have write access to the project directory.
-Run commands with sudo (Linux/macOS) or as Administrator (Windows) if needed.
-
-
-Report Not Generated:
-
-Verify pytest-html is installed (pip show pytest-html).
-Check command includes --html=report.html.
-
-
-
-Contributing
-To contribute to the test suite:
-
-Fork the repository.
-Create a feature branch:git checkout -b feature/new-test
-
-
-Add tests in tests/, following existing structure.
-Update requirements.txt if new dependencies are added:pip freeze > requirements.txt
-
-
-Commit and push:git add .
-git commit -m "Add new test for feature X"
-git push origin feature/new-test
-
-
-Open a pull request on GitHub.
-
-Guidelines:
-
-Use descriptive test names (e.g., test_validate_error_message).
-Include assertions for visibility and state.
-Avoid hardcoding credentials; use .env.
-Test locally before pushing:pytest tests/
-
-
-
-Contact
-For support, contact:
-
-Email: [your-email@example.com]
-Issues: Open a GitHub issue at https://github.com/your-username/fract-test-suite/issues
-Credentials: Request updated FRACT_USERNAME and FRACT_PASSWORD securely.
-
-Please provide report.html or error logs when reporting issues for faster resolution.
+```
+
+**Note**: Do not commit `.env` files containing credentials.
+
+## Setup Instructions
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/fract-test-suite.git
+   cd fract-test-suite
+   ```
+
+2. **Create a Virtual Environment**:
+   ```bash
+   python -m venv venv
+   ```
+   Activate:
+   - Linux/macOS:
+     ```bash
+     source venv/bin/activate
+     ```
+   - Windows:
+     ```bash
+     venv\Scripts\activate
+     ```
+
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   Installs:
+   - `pytest`: Test framework.
+   - `selenium`: Web automation.
+   - `pytest-html`: HTML reports.
+   - `webdriver-manager`: ChromeDriver management.
+   - `python-dotenv`: Environment variables.
+
+4. **Configure Credentials**:
+   - Create `.env` in the project root:
+     ```plaintext
+     FRACT_USERNAME=your-username
+     FRACT_PASSWORD=your-password
+     ```
+   - Contact [your-email@example.com] for credentials.
+   - **Security**: Do not share `.env` publicly or commit to Git.
+
+5. **Verify Setup**:
+   - Confirm Chrome version: `chrome://settings/help`.
+   - Check Python: `python --version`.
+   - List dependencies: `pip list`.
+
+## Running Tests
+Tests run in headless mode and generate an HTML report.
+
+1. **Run All Tests**:
+   ```bash
+   pytest tests/ --html=report.html --self-contained-html
+   ```
+   - Outputs `report.html` with results.
+
+2. **Run Specific Test**:
+   Example:
+   ```bash
+   pytest tests/test_error_message_validation.py --html=report.html
+   ```
+
+3. **View Results**:
+   - Open `report.html` in a browser to review pass/fail status and durations.
+   - Example: "PASSED tests/test_error_message_validation.py::TestErrorMessageValidation::test_validate_error_message [20.000s]".
+
+4. **Clean Up**:
+   - Delete `report.html` if unneeded.
+   - Deactivate virtual environment:
+     ```bash
+     deactivate
+     ```
+
+## Test Suite Details
+The suite includes over 80 test cases, covering the following Fract application functionalities:
+
+- **Login** (`test_login.py`):
+  - Verifies successful login with valid credentials.
+  - Duration: ~6 seconds.
+
+- **UI** (`test_expand.py`, others):
+  - Tests navigation, panel expand/collapse (e.g., left panel), and UI element visibility.
+  - Duration: ~24 seconds (e.g., `test_expand.py`).
+
+- **Map Tool** (`test_map_toolsp.py`, `test_map_tools.py`):
+  - Validates map tool interactions (e.g., zoom, rulers).
+  - Duration: ~29–63 seconds.
+
+- **Map List** (`test_map_lists.py`, `test_map_list_search.py`):
+  - Tests map list navigation and search (e.g., "24 Hour Fitness").
+  - Duration: ~22–27 seconds.
+
+- **Verify List Item Click** (`test_map_lists.py`):
+  - Ensures clicking list items displays details.
+  - Duration: ~27 seconds.
+
+- **Verify Favorite Item Toggling** (`test_map_list_fav_vis.py`):
+  - Tests toggling favorite status for list items.
+  - Duration: ~28 seconds.
+
+- **Find Me** (`test_findme.py`):
+  - Verifies "Find Me" geolocation feature.
+  - Duration: ~37 seconds.
+
+- **User Profile** (`test_user_profile.py`):
+  - Tests profile settings updates.
+  - Duration: ~29 seconds.
+
+- **Account Settings Panel** (`test_user_profile.py`):
+  - Verifies account settings access.
+  - Duration: ~29 seconds.
+
+- **Profile Settings** (`test_insight.py`):
+  - Tests profile configuration options.
+  - Duration: ~37 seconds.
+
+- **Project Settings** (`test_project_settings.py`):
+  - Validates project configuration updates.
+  - Duration: ~27 seconds.
+
+- **Notification** (`test_notification.py`):
+  - Tests notification settings and alerts.
+  - Duration: ~25 seconds.
+
+- **Tutorials** (`test_tutorials.py`):
+  - Verifies tutorial access and navigation.
+  - Duration: ~33 seconds.
+
+- **Create New Territory** (`test_new_territory.py`):
+  - Tests territory creation workflows.
+  - Duration: ~22 seconds.
+
+- **Team Territory Management** (`test_team_territory.py`):
+  - Validates team territory assignments and settings.
+  - Duration: ~26 seconds.
+
+- **New List Creation & Data Upload** (`test_new_list_creation.py`):
+  - Tests list creation and data import.
+  - Duration: ~26 seconds.
+
+- **Team Lists Management (Adding & Searching Lists by Project)** (`test_team_list_mgt.py`, `test_team_list_add.py`):
+  - Verifies adding and searching team lists.
+  - Duration: ~20–22 seconds.
+
+- **Team Lists Management (Search & Navigation)** (`test_team_list_FNG.py`):
+  - Tests team list search and navigation.
+  - Duration: ~21 seconds.
+
+- **Business Lists Management (Search & Category Filtering)** (`test_business_list.py`):
+  - Validates business list search and filtering.
+  - Duration: ~27 seconds.
+
+- **Arts & Entertainment List Management (Search, Filtering, and Navigation)** (`test_business_Arts_Ents.py`):
+  - Tests arts & entertainment list features.
+  - Duration: ~32 seconds.
+
+- **New Map Area Creation and Customization** (`test_territory_color.py`):
+  - Verifies map area creation and styling.
+  - Duration: ~41 seconds.
+
+- **Territories Report Generation and Export** (assumed in `test_new_territory.py`):
+  - Tests report generation and export.
+  - Duration: ~22 seconds.
+
+- **Pivot Table Data Visualization and File Upload** (assumed in `test_new_list_creation.py`):
+  - Validates pivot table visualization and uploads.
+  - Duration: ~26 seconds.
+
+- **View Territory Details and Settings** (`test_team_territory.py`):
+  - Tests territory details display.
+  - Duration: ~26 seconds.
+
+- **Sign Out** (`test_signout.py`):
+  - Verifies logout functionality.
+  - Duration: ~24 seconds.
+
+- **In-App Chat** (`test_send_message_div.py`):
+  - Tests initiating in-app chat (Intercom widget).
+  - Duration: ~20 seconds.
+
+- **Admin Dashboard** (assumed in `test_user_mgt.py`):
+  - Validates admin dashboard access and functionality.
+  - Duration: ~38 seconds.
+
+- **Active Project** (assumed in `test_project_settings.py`):
+  - Tests active project selection and management.
+  - Duration: ~27 seconds.
+
+- **Expand/Collapse Left Panel** (`test_expand.py`):
+  - Verifies left panel toggle functionality.
+  - Duration: ~24 seconds.
+
+- **Form Validation** (`test_error_message_validation.py`):
+  - Validates error messages (e.g., "Name is required") on forms.
+  - Duration: ~20 seconds.
+
+**Notes**:
+- Durations are estimated from prior runs (see test results table).
+- Some functionalities (e.g., Territories Report, Pivot Table) are assumed covered by related tests; confirm specific test files if needed.
+- Tests use `https://app.fract.com`. Update URLs in `setup_method` if different (e.g., `/dashboard`, `/contact`).
+
+## Troubleshooting
+- **ChromeDriver Issues**:
+  - `webdriver-manager` auto-installs ChromeDriver. If errors occur:
+    ```bash
+    pip install --upgrade webdriver-manager
+    ```
+    Or manually download from [chromedriver.chromium.org](https://chromedriver.chromium.org/downloads) and place in PATH.
+
+- **Login Failures**:
+  - Verify `.env` credentials (`FRACT_USERNAME`, `FRACT_PASSWORD`).
+  - Update login selectors if UI changes (e.g., `input[name='username']`).
+  - Contact [your-email@example.com] for credentials.
+
+- **Element Not Found**:
+  - UI changes may break selectors. Update tests (e.g., `span.error` to `span.error-message`).
+  - Increase timeout:
+    ```python
+    WebDriverWait(self.driver, 15).until(...)
+    ```
+  - Debug:
+    ```python
+    print(self.driver.find_elements(By.CSS_SELECTOR, "span.error"))
+    ```
+
+- **Test Failures**:
+  - Check `report.html` for details.
+  - Run tests individually:
+    ```bash
+    pytest tests/test_error_message_validation.py -v
+    ```
+  - Ensure stable internet.
+
+- **Permission Errors**:
+  - Use `sudo` (Linux/macOS) or Administrator mode (Windows) if needed.
+  - Check directory write access.
+
+- **Report Issues**:
+  - Verify `pytest-html` (`pip show pytest-html`).
+  - Ensure `--html=report.html` in command.
+
+## Contributing
+1. Fork the repository.
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature/new-test
+   ```
+3. Add tests in `tests/`, matching existing structure.
+4. Update `requirements.txt` if needed:
+   ```bash
+   pip freeze > requirements.txt
+   ```
+5. Commit and push:
+   ```bash
+   git add .
+   git commit -m "Add test for new functionality"
+   git push origin feature/new-test
+   ```
+6. Open a pull request.
+
+**Guidelines**:
+- Use descriptive test names (e.g., `test_validate_error_message`).
+- Include `WebDriverWait` for dynamic elements.
+- Use `.env` for credentials.
+- Test locally:
+  ```bash
+  pytest tests/
+  ```
+
+## Contact
+- **Email**: [your-email@example.com]
+- **GitHub Issues**: [https://github.com/your-username/fract-test-suite/issues](https://github.com/your-username/fract-test-suite/issues)
+- **Credentials**: Request `FRACT_USERNAME` and `FRACT_PASSWORD` securely.
+
+Provide `report.html` or error logs for support.
