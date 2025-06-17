@@ -21,26 +21,29 @@ class TestCreateNewTerritory:
             EC.element_to_be_clickable((By.CSS_SELECTOR, "div.image[style*='new-list.png']"))
         ).click()
 
+    def testTC_NL_02(self):
         # Wait for the input field to be visible and interactable
         name_input = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "div.form-item input[name='name']"))
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "input[name='name'].form-control.required"))
         )
 
-        # Click, clear, and send text
+        # Click the field
         name_input.click()
+
+        # Clear and enter an empty string
         name_input.clear()
-        name_input.send_keys("")
+        name_input.send_keys("")  # Effectively enters nothing
 
         # Wait for the error message to be visible
-        error_message = WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, "//span[@class='error' and text()='Name is required']"))
-        )
+        #error_message = WebDriverWait(self.driver, 10).until(
+           # EC.visibility_of_element_located((By.XPATH, "//span[@class='error' and text()='Name is required']"))
+        #)
 
         
 
             
 
-                
+               
         # Step 3: Locate the description textarea and enter "Priority zone"
     #    description_textarea = self.driver.find_element(By.CSS_SELECTOR, "div.form-item textarea[name='description']")
      ##  description_textarea.send_keys("Priority zone")

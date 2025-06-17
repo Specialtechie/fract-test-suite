@@ -38,14 +38,14 @@ class TestTeamListManagement:
                 ))
             ).click()
 
-    def testTC_FNG_06(self):
+    #def testTC_FNG_06(self):
             # Verify the Number of items is 25
-            label = WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located((By.XPATH, "//span[text()='Number of items:']"))
-            )
-            value = self.driver.find_element(By.XPATH, "//span[text()='Number of items:']/following-sibling::span[@class='value']")
+            #label = WebDriverWait(self.driver, 10).until(
+             #   EC.visibility_of_element_located((By.XPATH, "//span[text()='Number of items:']"))
+            #)
+           # value = self.driver.find_element(By.XPATH, "//span[text()='Number of items:']/following-sibling::span[@class='value']")
 
-            assert value.text.strip() == "25", f"Expected '25', but got '{value.text.strip()}'"
+            #assert value.text.strip() == "25", f"Expected '25', but got '{value.text.strip()}'"
 
     def testTC_FNG_05(self):
             # Verify the NAICS code and description

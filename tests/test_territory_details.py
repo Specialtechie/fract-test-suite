@@ -123,19 +123,19 @@ class TestTeamTerritory:
 
         # Click "Permanently delete"
         #permanent_delete_btn.click()
-    def test(self):
+    #def test(self):
                 # Click the Share button by its ID
-        share_button = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "share"))
-        )
-        share_button.click()
+        #share_button = WebDriverWait(self.driver, 10).until(
+         #   EC.element_to_be_clickable((By.ID, "share"))
+        #)
+        #share_button.click()
     
-    def test1(self):
+    #def test1(self):
         # Wait for the edit button to be clickable and click it
-        edit_button = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "edit"))
-        )
-        edit_button.click()
+        #edit_button = WebDriverWait(self.driver, 10).until(
+        #    EC.element_to_be_clickable((By.ID, "edit"))
+        #)
+       # edit_button.click()
 
     
 

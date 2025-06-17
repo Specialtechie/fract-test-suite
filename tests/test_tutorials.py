@@ -28,8 +28,8 @@ class TestTutorials:
         )
         tutorials_link.click()
 
-        # Wait for the tutorial video element by its text and click it
-        tutorial_video = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//span[@class='name' and text()='Create a New Territory']"))
+        # Wait for the div to be clickable and click it
+        tutorial_image = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "div.image.tutorial-link"))
         )
-        tutorial_video.click()
+        tutorial_image.click()

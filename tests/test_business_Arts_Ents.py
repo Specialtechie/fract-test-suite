@@ -78,10 +78,9 @@ class TestBusinessListManagement:
 
     def testTC_AE_04(self):
 
-                # Wait until the address div is clickable and click it
-        address_div = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//div[@class='address' and text()='1000 Van Ness Avenue, San Francisco, CA']"))
-        )
-        address_div.click()
+                # Wait and click the specific title
+        WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//div[@class='title' and text()='AMC Entertainment - AMC Town Square 18']"))
+        ).click()
     
 

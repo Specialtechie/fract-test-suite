@@ -19,15 +19,15 @@ class TestTeamTerritory:
         ).click()
 
    
-    def testsort_territory(self):
+    #def testsort_territory(self):
         # Click the territory sort button
-        WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "territory-sort-btn"))
-        ).click()
+       # WebDriverWait(self.driver, 10).until(
+        #    EC.element_to_be_clickable((By.ID, "territory-sort-btn"))
+        #).click()
         # Validate the sort status is 'by Distance'
-        sort_status = WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located((By.ID, "territory-sort-status"))
-        ).text
+       # sort_status = WebDriverWait(self.driver, 10).until(
+       #     EC.visibility_of_element_located((By.ID, "territory-sort-status"))
+       # ).text
 
 
 

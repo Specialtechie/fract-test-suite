@@ -19,9 +19,11 @@ class TestTerritoryReport:
 
     def testTC_TR_01(self):
             # Wait for and click the image element with the specific background image
-        WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "div.image.image-icon"))
-        ).click()
+        # Wait until the span icon is clickable and click it
+        list_icon = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "span.glyphicon-list-alt"))
+        )
+        list_icon.click()
 
     def testTC_TR_02(self):
             # Wait for the dropdown to be present
@@ -33,9 +35,12 @@ class TestTerritoryReport:
         Select(dropdown_element).select_by_visible_text("Demo org")
     
     def testTC_TR_03(self):
-        WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "a[title='CSV'].csv"))
-        ).click()
+        # Wait until the CSV export button is clickable and click it
+        csv_button = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "a.csv[title='CSV']"))
+        )
+        csv_button.click()
+        
         download_link = WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((
                 By.XPATH,
@@ -46,9 +51,12 @@ class TestTerritoryReport:
         assert download_link.is_displayed(), "CSV download link is not displayed."
 
     def testTC_TR_04(self):
-        WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "a[title='XLS'].xls"))
-        ).click()
+        # Wait until the XLS export button is clickable and click it
+        xls_button = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "a.xls[title='XLS']"))
+        )
+        xls_button.click()
+
         download_2link = WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((
                 By.XPATH,

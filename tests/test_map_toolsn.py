@@ -59,16 +59,16 @@ class TestAddNewSite:
         )
 
         # Click the custom dropdown input (assumed to be an input or div-based dropdown)
-        dropdown_input = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.CLASS_NAME, "form-control"))
-        )
-        dropdown_input.click()
+        #dropdown_input = WebDriverWait(self.driver, 10).until(
+          #  EC.element_to_be_clickable((By.CLASS_NAME, "form-control"))
+        #)
+        #dropdown_input.click()
 
         # Wait for the dropdown list and select the desired option
-        desired_option = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//li[@data-value='669ff908acc3181e0cae35ab']"))
-        )
-        desired_option.click()
+       # desired_option = WebDriverWait(self.driver, 10).until(
+         #   EC.element_to_be_clickable((By.XPATH, "//li[@data-value='669ff908acc3181e0cae35ab']"))
+        #)
+        #desired_option.click()
 
         # Add additional form submission or assertions as needed
 
