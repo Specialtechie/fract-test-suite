@@ -33,5 +33,11 @@ class TestProjectSettings:
         )
         project_settings_link.click()
 
+    # def test_delete_project(self):
+    #     # Click the 'Delete project' button
+    #     delete_button = WebDriverWait(self.driver, 10).until(
+    #         EC.element_to_be_clickable((By.CSS_SELECTOR, "button.btn.btn-danger.remove-btn"))
+    #     )
+    #     delete_button.click()      
         
     

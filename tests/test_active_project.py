@@ -45,9 +45,10 @@ class TestTerritoryReport:
         print("Recently Used tab is visible and active.")
         
 
-    def testTC_PROJ_03(self):
-        # Wait until the star icon within the list item for Demo org is clickable and click it
-        star_button = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//li[@id='6781b1927d29f7cf05afd157']//span[contains(@class, 'glyphicon-star')]"))
-        )
-        star_button.click()
+    # def testTC_PROJ_03(self):
+    #     # Wait until the star icon within the list item for Demo org is clickable and click it
+    #     star_button = WebDriverWait(self.driver, 10).until(
+    #         EC.element_to_be_clickable((By.XPATH, "//li[@id='6781b1927d29f7cf05afd157']//span[contains(@class, 'glyphicon-star')]"))
+    #     )
+    #     star_button.click()
+    

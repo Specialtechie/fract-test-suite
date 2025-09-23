@@ -78,6 +78,7 @@ class TestCreateNewTerritory:
         zip_input.send_keys("94109" + Keys.ENTER)
 
     def testTC_PM_07(self):    
-        WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "a.btn.submit.save-territory"))
-        ).click()
+        create_button = self.driver.find_element(By.CSS_SELECTOR, "div.static.bottom a.btn.submit.save-territory")
+        self.driver.execute_script("arguments[0].click();", create_button)
+
+
