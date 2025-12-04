@@ -18,9 +18,11 @@ class TestBusinessListManagement:
 
     def testTC_BL_01(self):
             # Wait for and click the image element with the specific background image
-        WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "div.image[style*='business-list.png']"))
-                ).click()
+        business_list_btn = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "business-lists-btn"))
+        )
+        business_list_btn.click()
+
     
             
     def testTC_AE_01(self):        

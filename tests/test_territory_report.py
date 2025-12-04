@@ -20,10 +20,10 @@ class TestTerritoryReport:
     def testTC_TR_01(self):
             # Wait for and click the image element with the specific background image
         # Wait until the span icon is clickable and click it
-        list_icon = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "span.glyphicon-list-alt"))
-        )
-        list_icon.click()
+        WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "div.image[style*='/icons/app/10.svg']"))
+        ).click()
+
 
     def testTC_TR_02(self):
             # Wait for the dropdown to be present
@@ -32,7 +32,7 @@ class TestTerritoryReport:
         )
 
         # Create Select object and choose "Demo org"
-        Select(dropdown_element).select_by_visible_text("Demo org")
+        Select(dropdown_element).select_by_visible_text("Test Project")
     
     def testTC_TR_03(self):
         # Wait until the CSV export button is clickable and click it

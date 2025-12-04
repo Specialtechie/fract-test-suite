@@ -17,9 +17,13 @@ class TestCreateNewTerritory:
         login.login()
     
     def testTC_NL_01(self):
-        WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "div.image[style*='new-list.png']"))
-        ).click()
+        icon_button = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(
+                (By.CSS_SELECTOR, "div.image[style*='/icons/app/1.svg']")
+            )
+        )
+        icon_button.click()
+
 
     # Step 2: Locate the name input and enter "Campground List 2"
         name_input = self.driver.find_element(By.CSS_SELECTOR, "div.form-item input[name='name']")

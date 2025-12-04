@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+from pages.login_page import LoginPage
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -17,13 +18,12 @@ def init_driver(request):
 @pytest.mark.usefixtures("init_driver")
 class TestMapListsFavorite:
 
-    def test_TC_Map_List_004(self):
-        # Step 1: Log in
-        self.driver.get("https://app.fract.com/login")
-        self.driver.find_element(By.ID, "email-id").send_keys("kinzyola28@gmail.com")
-        self.driver.find_element(By.ID, "password").send_keys("Hakinzy28")
-        self.driver.find_element(By.ID, "submit").click()
+    def test_open_new_site_form(self):
+        login = LoginPage(self.driver)
+        login.login()
 
+    def test_TC_Map_List_004(self):
+        
         WebDriverWait(self.driver, 15).until(
             EC.presence_of_element_located((By.ID, "dashboard"))
         )

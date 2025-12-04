@@ -19,7 +19,8 @@ class TestTeamListManagement:
     def testTeam_Lists_Management(self):
             # Step 1: Wait for the Team Lists icon to be visible and click it
             team_list_icon = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "div.image[style*='background-image: url(\"/images/categories/team-list.png\")']"))
+                EEC.element_to_be_clickable(
+        (By.CSS_SELECTOR, "div.image[style*='/icons/app/2.svg']"))
             )
             team_list_icon.click()
 

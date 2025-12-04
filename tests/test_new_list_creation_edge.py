@@ -17,9 +17,13 @@ class TestCreateNewTerritory:
         login.login()
     
     def testTC_NL_01(self):
-        WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "div.image[style*='new-list.png']"))
-        ).click()
+        icon_button = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(
+                (By.CSS_SELECTOR, "div.image[style*='/icons/app/1.svg']")
+            )
+        )
+        icon_button.click()
+
 
     def testTC_NL_02(self):
         # Wait for the input field to be visible and interactable

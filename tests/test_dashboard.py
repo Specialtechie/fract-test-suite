@@ -30,7 +30,7 @@ class TestDashboard:
 
         # Select "Demo org" from the dropdown options
         demo_org_option = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//ul[@id='project-filter-dropdown']/li/a[normalize-space()='Fract Sales Territories']"))
+            EC.element_to_be_clickable((By.XPATH, "//ul[@id='project-filter-dropdown']/li/a[normalize-space()='Test Project']"))
         )
         demo_org_option.click()
 

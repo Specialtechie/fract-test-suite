@@ -15,7 +15,7 @@ class TestTeamTerritory:
         
     def test_team_territory(self):
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "div.image[style*='team-territory.png']"))
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "div.image[style*='/icons/app/7.svg']"))
         ).click()
 
    

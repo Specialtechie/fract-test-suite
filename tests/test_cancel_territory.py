@@ -16,9 +16,11 @@ class TestCreateNewTerritory:
         login.login()
         
     def testTC_PM_01(self):
-        WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "div.image[style*='new-territory.png']"))
-        ).click()
+        icon_btn = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "div.image[style*='/icons/app/6.svg']"))
+        )
+        icon_btn.click()
+
     
     def testTC_PM_07(self):
         WebDriverWait(self.driver, 10).until(

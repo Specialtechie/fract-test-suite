@@ -26,7 +26,7 @@ class TestTerritoryReport:
 
         # Wait for the project link with specific title and click it
         fract_sales_project = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//h4[text()='Fract Sales Territories']"))
+            EC.element_to_be_clickable((By.XPATH, "//h4[text()='Test Project']"))
         )
         fract_sales_project.click()
 

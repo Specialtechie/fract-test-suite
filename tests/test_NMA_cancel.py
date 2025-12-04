@@ -18,9 +18,13 @@ class TestNewAreaMap:
 
     def testTC_NMA_01(self):
             # Wait for and click the image element with the specific background image
-        WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "div.image[style*='new-view.png']"))
-                ).click()
+        target_icon = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(
+                (By.CSS_SELECTOR, "div.image[style*='/icons/app/5.svg']")
+            )
+        )
+        target_icon.click()
+
     
         
 
